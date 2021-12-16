@@ -27,9 +27,13 @@ const ImgLanding = () => {
 	const [unlocked, unlock] = useState(false);
 
 	useEffect(async () => {
-		const resp = await axios.get(`${import.meta.env.VITE_SERVER_URL}${id}`);
-		const imgData = resp.data;
-		setRaw(imgData);
+		try {
+			const resp = await axios.get(`${import.meta.env.VITE_SERVER_URL}${id}`);
+			const imgData = resp.data;
+			setRaw(imgData);
+		} catch (e) {
+			window.location = './404';
+		}
 	}, []);
 
 	const attemptToUnlock = () => {
