@@ -57,7 +57,6 @@ const Home = () => {
 		if (uri == null)
 			await load(img);
 		const encrypted = AES.encrypt(uri, pwd);
-		// const decrypted = AES.decrypt(encrypted, pwd).toString(encodings.Utf8);
 		const resp = await axios.post(import.meta.env.VITE_SERVER_URL, encrypted.toString());
 		const id = resp.data;
 		window.location = `./${id}`;
