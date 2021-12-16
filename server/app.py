@@ -14,12 +14,14 @@ def home():
 	data = request.get_data(as_text=True)
 	id = ShortUUID().random(8)
 	all[id] = data
+	print(all)
 
 	return id
 
 @app.route('/<name>')
 def page(name):
 	if name in all:
+		print(all)
 		return all[name]
 
 	return 'Invalid', 404

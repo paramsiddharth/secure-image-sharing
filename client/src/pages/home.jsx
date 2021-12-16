@@ -6,7 +6,6 @@ import {
 	AppBar,
 	Toolbar,
 	TextField,
-	createTheme,
 	ThemeProvider,
 	Typography,
 	Button
@@ -14,11 +13,7 @@ import {
 import { AES, enc as encodings } from 'crypto-js';
 import axios from 'axios';
 
-const theme = createTheme({
-	palette: {
-		mode: 'dark'
-	}
-});
+import theme from '../theme';
 
 const Home = () => {
 	const [img, setImg] = useState(null);
@@ -63,8 +58,7 @@ const Home = () => {
 			await load(img);
 		const encrypted = AES.encrypt(uri, pwd);
 		// const decrypted = AES.decrypt(encrypted, pwd).toString(encodings.Utf8);
-		const resp = await axios.post(import.meta.env.VITE_SERVER_URL, 'a');
-		console.log(resp.data);
+		const resp = await axios.post(import.meta.env.VITE_SERVER_URL, encrypted.toString());
 		const id = resp.data;
 		window.location = `./${id}`;
 	};
