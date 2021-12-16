@@ -2,5 +2,5 @@ venv/
 env/
 node_modules/
 *.log
-
+*.http
 .vscode/
