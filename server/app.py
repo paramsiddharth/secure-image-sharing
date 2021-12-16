@@ -1,8 +1,11 @@
 from os import environ as env
 from flask import Flask, request
+from flask_cors import CORS
 from shortuuid import ShortUUID
 
 app = Flask(__name__)
+
+CORS(app)
 
 all = {}
 
